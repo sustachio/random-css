@@ -13,6 +13,10 @@ properties = [
     {
         "name": "background-color",
         "arguments": [COLOR,]
+    },
+    {
+        "name": "color",
+        "arguments": [COLOR,]
     }
 ]
 
