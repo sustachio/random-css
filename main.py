@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 def get_identifiers(html):
     soup = BeautifulSoup(html, "html.parser")
     body = soup.find("body")
+    if not body:
+        body = soup
     
     classes = set([
             class_ 
