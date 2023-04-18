@@ -23,7 +23,7 @@ def get_identifiers(html):
             for element in body.find_all()
     ])
 
-    return (["body"] +
+    return ((["body"] if soup.find("body") else []) +
             list(tags) +
             ["#"+id for id in ids] + 
             ["."+class_ for class_ in classes]
