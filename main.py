@@ -1,5 +1,4 @@
 from random import randint, choice
-from flask import Flask, render_template
 from bs4 import BeautifulSoup
 
 def get_identifiers(html):
@@ -27,7 +26,6 @@ def get_identifiers(html):
             list(tags) +
             ["body"])
     
-app = Flask(__name__)
 
 PROPRETIES_RANGE = (2,4)
 
@@ -83,12 +81,3 @@ def generate_css(html):
         result += "}\n\n"
 
     return result
-
-with open("templates/index.html") as f:
-    html = f.read()
-
-@app.route("/")
-def home():
-    return render_template("index.html", css=generate_css(html))
-
-app.run(host='0.0.0.0', port=81)
