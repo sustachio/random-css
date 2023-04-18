@@ -2,10 +2,9 @@ from random import randint, choice
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
 
-def get_identifiers(file):
-    with open(file, "r") as f:
-        soup = BeautifulSoup(f.read(), "html.parser")
-        body = soup.find("body")
+def get_identifiers(html):
+    soup = BeautifulSoup(html, "html.parser")
+    body = soup.find("body")
     
     classes = set([
             class_ 
@@ -34,8 +33,6 @@ PROPRETIES_RANGE = (2,4)
 
 COLOR = ["black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia", "green", "lime", "olive", "yellow", "navy", "blue", "teal", "aqua"]
 
-identifiers = get_identifiers("templates/index.html")
-
 properties = [
     {
         "name": "background-color",
@@ -63,7 +60,9 @@ properties = [
     }
 ]
 
-def generate_css(identifiers):
+def generate_css(html):
+    identifiers = get_identifiers(html)
+    
     result = ""
 
     # each rule
@@ -85,10 +84,11 @@ def generate_css(identifiers):
 
     return result
 
-print(generate_css(identifiers))
+with open("templates/index.html") as f:
+    html = f.read()
 
 @app.route("/")
 def home():
-    return render_template("index.html", css=generate_css(identifiers))
+    return render_template("index.html", css=generate_css(html))
 
 app.run(host='0.0.0.0', port=81)
