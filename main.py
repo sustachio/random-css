@@ -23,10 +23,11 @@ def get_identifiers(html):
             for element in body.find_all()
     ])
 
-    return (["."+class_ for class_ in classes] +
-            ["#"+id for id in ids] + 
+    return (["body"] +
             list(tags) +
-            ["body"])
+            ["#"+id for id in ids] + 
+            ["."+class_ for class_ in classes]
+            )
     
 
 PROPRETIES_RANGE = (2,4)
