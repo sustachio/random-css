@@ -1,14 +1,12 @@
 from random import random, randint, choice
+from html_reader import get_identifiers
+
 
 PROPRETIES_RANGE = (2,4)
 
 color = ["black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia", "green", "lime", "olive", "yellow", "navy", "blue", "teal", "aqua"]
 
-identifiers = [
-    "h1",
-    ".coolclass",
-    "#neatid"
-]
+identifiers = get_identifiers("index.html")
 
 properties = [
     {
