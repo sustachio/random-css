@@ -1,17 +1,18 @@
 from random import random, randint, choice
 from html_reader import get_identifiers
+from flask import Flask, render_template
 
+app = Flask(__name__)
 
 PROPRETIES_RANGE = (2,4)
+COLOR = ["black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia", "green", "lime", "olive", "yellow", "navy", "blue", "teal", "aqua"]
 
-color = ["black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia", "green", "lime", "olive", "yellow", "navy", "blue", "teal", "aqua"]
-
-identifiers = get_identifiers("index.html")
+identifiers = get_identifiers("templates/index.html")
 
 properties = [
     {
         "name": "background-color",
-        "arguments": [color,]
+        "arguments": [COLOR,]
     }
 ]
 
@@ -26,8 +27,8 @@ def generate_css(identifiers):
         for _ in range(randint(*PROPRETIES_RANGE)):
             proprety = choice(properties)
 
-            #name: choice(argument) choice(argument)
-            result += "\t{}: {}\n" \
+            #name: choice(argument) choice(argument);
+            result += "\t{}: {};\n" \
                 .format(
                     proprety["name"], 
                     " ".join([choice(argument) for argument in proprety["arguments"]])
@@ -38,3 +39,9 @@ def generate_css(identifiers):
     return result
 
 print(generate_css(identifiers))
+
+@app.route("/")
+def home():
+    return render_template("index.html", css=generate_css(identifiers))
+
+app.run(host='0.0.0.0', port=81)
