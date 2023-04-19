@@ -43,10 +43,10 @@ properties = [
         "name": "color",
         "arguments": [COLOR,]
     },
-    {
-        "name": "float",
-        "arguments": [["left", "right"]]
-    },
+    # {
+    #     "name": "float",
+    #     "arguments": [["left", "right"]]
+    # },
     {
         "name": "border",
         "arguments": [
