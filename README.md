@@ -66,7 +66,6 @@ The generated css is limited to the following propreties:
 
 - background-color
 - color
-- float
 - border
 - display
 
