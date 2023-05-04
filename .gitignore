@@ -1,0 +1,12 @@
+.config/
+.upm/
+venv/
+git_config.sh
+poetry.lock
+pyproject.toml
+replit.nix
+__pycache__/
+database.db
+backups/
+.replit
+.breakpoints
