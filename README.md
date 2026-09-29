@@ -3,6 +3,8 @@
 Do you dislike writing css? Don't have the time? Then random-css is the tool for you! It can generate very simple random css for any webpage. 
 It works by getting every tag, class, and id then making styles for each of them.
 
+Try it out at [https://sethmueller.page/?random_css](https://sethmueller.page/?random_css)! (below)
+
 ![My blog with random-css](example.png)
 My blog with random-css
 
